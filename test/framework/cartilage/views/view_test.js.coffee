@@ -69,6 +69,12 @@ test "should determine template name automatically", ->
   testView = new TestView
   equal testView.template(), "TestView Template", "template() should return 'TestView Template'"
 
+test "should determine template folder name automatically", ->
+  window.JST = { "folder/test_view": => "TestView Folder Template"}
+  class Folder_TestView extends Cartilage.View
+  folderTestView = new Folder_TestView
+  equal folderTestView.template(), "TestView Folder Template", "template() should return 'TestView Folder Template'"
+
 test "should determine CSS class names from the inheritance chain", ->
   class TestViewOne extends Cartilage.View
   class TestViewTwo extends TestViewOne
